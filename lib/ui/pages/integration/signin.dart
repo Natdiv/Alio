@@ -12,7 +12,6 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -30,7 +29,7 @@ class _SignInState extends State<SignIn> {
           ),
           Container(
             decoration:
-            const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.25)),
+                const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.25)),
           ),
           SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
@@ -60,45 +59,57 @@ class _SignInState extends State<SignIn> {
                                   Text(
                                     'Connexion',
                                     textAlign: TextAlign.center,
-                                    style: Theme.of(context).textTheme.headline3,
+                                    style:
+                                        Theme.of(context).textTheme.headline3,
                                   ),
                                   const SizedBox(
                                     height: 32,
                                   ),
                                   _buidForm(),
-                                  const SizedBox(height: 32,),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
                                   Center(
                                     child: Text(
                                       'Mot de passe oublié?',
                                       style: Theme.of(context)
                                           .textTheme
-                                          .bodyText1?.copyWith(decoration: TextDecoration.underline)
-                                      ,
+                                          .bodyText1
+                                          ?.copyWith(
+                                              decoration:
+                                                  TextDecoration.underline),
                                     ),
                                   ),
-                                  const SizedBox(height: 32,),
+                                  const SizedBox(
+                                    height: 32,
+                                  ),
                                   Center(
                                     child: Text(
                                       'Je n\'ai pas de compte',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1
-                                      ,
+                                      style:
+                                          Theme.of(context).textTheme.bodyText1,
                                     ),
                                   ),
-                                  const SizedBox(height: 4,),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
                                   Center(
                                     child: InkWell(
                                       onTap: () {
-                                        Navigator.of(context).push(MaterialPageRoute(
-                                            builder: (BuildContext context) => const SignUp()));
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        const SignUp()));
                                       },
                                       child: Text(
                                         'Créer un nouveau compte',
                                         style: Theme.of(context)
                                             .textTheme
-                                            .bodyText1?.copyWith(decoration: TextDecoration.underline)
-                                        ,
+                                            .bodyText1
+                                            ?.copyWith(
+                                                decoration:
+                                                    TextDecoration.underline),
                                       ),
                                     ),
                                   ),
@@ -125,88 +136,77 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-Widget _buildNameFormField(String hintText, TextInputType textInputType) {
-  return TextFormField(
-    cursorColor: AppConst.primaryColor,
-    style: Theme.of(context).textTheme.bodyText1,
-    scrollPhysics: const BouncingScrollPhysics(),
-    keyboardType: textInputType,
-    decoration: InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
-      fillColor: const Color.fromRGBO(255, 255, 255, 0.35),
-      filled: true,
-      focusColor: AppConst.primaryColor,
-      enabledBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-              Radius.circular(8)),
-          borderSide: BorderSide(
-              color: Colors.white,
-              width: 2)),
-      focusedBorder: OutlineInputBorder(
-          borderRadius: const BorderRadius.all(
-              Radius.circular(8)),
-          borderSide: BorderSide(
-              color: AppConst.primaryColor,
-              width: 2)),
-      border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-              Radius.circular(8))),
-      hintText: hintText,
-      hintStyle: Theme.of(context).textTheme.bodyText1,
-    ),
-    validator: (value) {
-      if (value == null || value.isEmpty) {
-        return 'Please enter some text';
-      }
-      return null;
-    },
-  );
-}
+  Widget _buildNameFormField(String hintText, TextInputType textInputType) {
+    return TextFormField(
+      cursorColor: AppConst.primaryColor,
+      style: Theme.of(context).textTheme.bodyText1,
+      scrollPhysics: const BouncingScrollPhysics(),
+      keyboardType: textInputType,
+      decoration: InputDecoration(
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        fillColor: const Color.fromRGBO(255, 255, 255, 0.35),
+        filled: true,
+        focusColor: AppConst.primaryColor,
+        enabledBorder: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderSide: BorderSide(color: Colors.white, width: 2)),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            borderSide: BorderSide(color: AppConst.primaryColor, width: 2)),
+        border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8))),
+        hintText: hintText,
+        hintStyle: Theme.of(context).textTheme.bodyText1,
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter some text';
+        }
+        return null;
+      },
+    );
+  }
 
-Widget _buidForm() {
-  return Form(
-    key: _formKey,
-    child: Column(
-      children: <Widget>[
-        _buildNameFormField('Adresse email', TextInputType.emailAddress),
-        const SizedBox(height: 8,),
-        _buildNameFormField('Mot de passe', TextInputType.visiblePassword),
-        const SizedBox(height: 16,),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (BuildContext context) => HomePage()));
-          },
-          style: ButtonStyle(
-              backgroundColor:
-              MaterialStateProperty.all<
-                  Color>(Colors.transparent),
-              padding: MaterialStateProperty.all<
-                  EdgeInsetsGeometry>(
-                  EdgeInsets.zero)),
-          child: Container(
-            height: 60,
-            decoration: BoxDecoration(
-                color: const Color.fromRGBO(
-                    255, 27, 109, 1),
-                borderRadius:
-                const BorderRadius.all(
-                    Radius.circular(8)),
-                border: Border.all(
-                    color: Colors.white,
-                    width: 2,
-                    style: BorderStyle.solid)),
-            child: Center(
-                child: Text(
-                  'Se connecter',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6,
-                )),
+  Widget _buidForm() {
+    return Form(
+      key: _formKey,
+      child: Column(
+        children: <Widget>[
+          _buildNameFormField('Adresse email', TextInputType.emailAddress),
+          const SizedBox(
+            height: 8,
           ),
-        ),
-      ],
-    ),
-  );
-}
+          _buildNameFormField('Mot de passe', TextInputType.visiblePassword),
+          const SizedBox(
+            height: 16,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (BuildContext context) => HomePage()));
+            },
+            style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all<Color>(Colors.transparent),
+                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+                    EdgeInsets.zero)),
+            child: Container(
+              height: 60,
+              decoration: BoxDecoration(
+                  color: const Color.fromRGBO(255, 27, 109, 1),
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  border: Border.all(
+                      color: Colors.white, width: 2, style: BorderStyle.solid)),
+              child: Center(
+                  child: Text(
+                'Se connecter',
+                style: Theme.of(context).textTheme.headline6,
+              )),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }

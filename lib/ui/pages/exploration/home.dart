@@ -3,6 +3,7 @@ import 'package:alio/ui/pages/exploration/home.screen.compte.dart';
 import 'package:alio/ui/pages/exploration/home.screen.favoris.dart';
 import 'package:alio/ui/pages/exploration/home.screen.home.dart';
 import 'package:alio/ui/pages/exploration/home.screen.messages.dart';
+import 'package:alio/ui/pages/post/new_post.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -52,12 +53,14 @@ class _HomePageState extends State<HomePage> {
   Widget _buildBottomIconButton(String icon, String name, int index) {
     return InkWell(
       onTap: () {
-        setState(() {
-          if(index > -1) {
+        if (index == -1) {
+         Navigator.of(context).push(MaterialPageRoute(
+                builder: (BuildContext context) => NewPost()));
+        } else if (index > -1) {
+          setState(() {
             _currentScreenIndex = index;
-            _currentScreenIndex = index;
-          }
-        });
+          });
+        }
       },
       splashColor: AppConst.primaryColor,
       child: Column(
@@ -67,12 +70,14 @@ class _HomePageState extends State<HomePage> {
             icon,
             width: 30,
             height: 30,
-            color: (_currentScreenIndex == index) ? AppConst.primaryColor : Colors.white,
+            color: (_currentScreenIndex == index)
+                ? AppConst.primaryColor
+                : Colors.white,
           ),
           SizedBox(
             height: 4,
           ),
-         /* Text(
+          /* Text(
             name,
             style: TextStyle(
               fontWeight: FontWeight.w300,
@@ -110,10 +115,12 @@ class _HomePageState extends State<HomePage> {
                     'assets/icons/Add circle outline.svg', 'Nouveau', -1),
                 _buildBottomIconButton(
                     'assets/icons/clarity_notification-line.svg',
-                    'Messages', 2),
+                    'Messages',
+                    2),
                 _buildBottomIconButton(
                     'assets/icons/healthicons_ui-user-profile-outline.svg',
-                    'Compte', 3),
+                    'Compte',
+                    3),
               ],
             ),
           ),

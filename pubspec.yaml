@@ -80,6 +80,7 @@ flutter:
     - assets/images/placeholder_cover.png
     - assets/images/placeholder_profil.png
     - assets/figures/group_arrow.svg
+    - assets/icons/arrow_back.svg
     - assets/icons/akar-icons_home.svg
     - assets/icons/clarity_heart-line.svg
     - assets/icons/Add circle outline.svg
@@ -90,6 +91,7 @@ flutter:
     - assets/icons/filled_star.svg
     - assets/icons/carbon_overflow-menu-vertical.svg
     - assets/icons/localisation.svg
+    - assets/icons/ei_close.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
