@@ -20,9 +20,13 @@ class _NewPostState extends State<NewPost> {
       toolbarHeight: 80,
       leading: Container(
         padding: EdgeInsets.symmetric(horizontal: AppConst.defaultPadding),
-        child: SvgPicture.asset(
-          'assets/icons/arrow_back.svg',
-          width: 30,
+        child: IconButton(
+          onPressed: () => Navigator.pop(context),
+          iconSize: 30,
+          padding: EdgeInsets.zero,
+          icon: SvgPicture.asset(
+            'assets/icons/arrow_back.svg',
+          ),
         ),
       ),
       // leadingWidth: 30,
