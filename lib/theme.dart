@@ -55,6 +55,7 @@ class AlioTheme {
       primaryColor: AppConst.primaryColor,
       splashColor: AppConst.primaryColor,
       brightness: Brightness.light,
+      toggleableActiveColor: AppConst.primaryColor,
       checkboxTheme: CheckboxThemeData(
         fillColor: MaterialStateColor.resolveWith((states) {
           return Colors.black;
